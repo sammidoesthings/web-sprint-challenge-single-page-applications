@@ -1,8 +1,13 @@
+import axios from "axios";
 import React from "react";
 import { useState, useEffect } from 'react';
+import PizzaForm from './PizzaForm';
+import PizzaTicket from './PizzaTickets';
+import * as yup from 'yup';
+import schema from './Schema';
 
 const initialFormValues = {
-  name: 'insert name',
+  name: '',
   size: '',
   topping1: false,
   topping2: false,
@@ -35,32 +40,91 @@ const App = () => {
   //disable our button
   const [disabled, setDisabled] = useState(initialDisabled);
 
-
+ 
   //add our helpers (axios) and event handlers
+
+  const postNewPizza = () => {
+    axios.post('https://reqres.in/api/orders')
+        .then(res => {
+          addPizzaTicket([res.data, ...pizzaTicket])
+        }).catch(err => {
+          console.error(err);
+        }).finally(() => {
+          setFormValues(initialFormValues);
+        })
+  }
+
 
   //we need to use axios here for our .get and .post
 
   //validate our forms with yup here
 
   //change handlers
+  const validate = (name, value) => {
+    yup.reach(schema, name)
+      .validate(value)
+      .then(() => setFormErrors({ ...formErrors, [name]: '' }))
+      .catch(err => setFormErrors({ ...formErrors, [name]: err.errors[0] }))
+  }
+
+  const inputChange = (name, value) => {
+    validate(name, value);
+    setFormValues({
+      ...formValues,
+      [name]: value
+    })
+  }
+
+  const formSubmit = () => {
+    const newPizza = {
+      name: formValues.name,
+      size: formValues.size,
+      topping1: formValues.topping1,
+      topping2: formValues.topping2,
+      topping3: formValues.topping3,
+      topping4: formValues.topping4,
+      special: formValues.special,
+    }
+    postNewPizza(newPizza);
+  }
 
   //side effects / useEffect + schema useEffect
+
+  useEffect(() => {
+    schema.isValid(formValues).then(valid => setDisabled(!valid))
+  }, [formValues]);
+
 
   //format return
   return (
     <>
       <div>
-        <h1>Lambda Eats</h1>
+        <h2>Lambda Eats</h2>
         <p>Are you a hungry, hungry Lambda?</p>
       </div>
+
       <div>
-        <p>This is where the pizza button goes!</p>
-      </div>
-      <div>
-        <p>This is where you'll see pizza tickets (or other restaurants?) show up!</p>
+        <button>Pizza?</button>
       </div>
 
-  {/* ADD BUTTON HERE that says "order a pizza!"*/}
+      <div className='temporary-form-holder'>
+        <PizzaForm
+          values={formValues}
+          change={inputChange}
+          submit={formSubmit}
+          disabled={disabled}
+          errors={formErrors}
+        />
+      </div>
+
+      <div>
+        <p>This is where you'll see pizza tickets (or other restaurants?) show up! (for now) </p>
+        {pizzaTicket.map(pizza => {
+          return (
+            <PizzaTicket key={pizza.name} details={pizza}/>
+          )
+        })}
+      </div>
 
     </>
   );

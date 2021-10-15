@@ -1,6 +1,11 @@
 .App {
   text-align: center;
 }
+.form-container {
+  padding: 5vh;
+  margin: 3vh;
+  background-color: lavender;
+}
 
 .App-logo {
   height: 40vmin;
