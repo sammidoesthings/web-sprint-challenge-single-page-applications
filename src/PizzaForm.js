@@ -28,7 +28,7 @@ export default function PizzaForm(props) {
 
     //return statement here
     return (
-        <form className='form-container' onSubmit={onSubmit}>
+        <form id="pizza-form" onSubmit={onSubmit}>
             <div className='form-info'>
                 <p>This is your pizza form! Build your own pizza below.</p>
             </div>
@@ -37,6 +37,7 @@ export default function PizzaForm(props) {
                 <div>
                     <label> Who is this pizza for? &nbsp;
                         <input
+                            id='name-input'
                             value={values.name}
                             onChange={onChange}
                             name='name'
@@ -48,6 +49,7 @@ export default function PizzaForm(props) {
                 <div className='size-dropdown'>
                     <label> What size? &nbsp;
                         <select 
+                            id='size-dropdown'
                             value={values.size}
                             onChange={onChange}
                             name='size'>
@@ -65,6 +67,7 @@ export default function PizzaForm(props) {
                     <h4>What toppings?</h4>
                     <label> Cheese? &nbsp;
                         <input
+                            id='name-input'
                             checked={values.topping1}
                             onChange={onChange}
                             type='checkbox'
@@ -104,6 +107,7 @@ export default function PizzaForm(props) {
                 <div>
                     <label> Do you have any special instructions for our staff?
                         <input
+                            id='special-text'
                             value={values.special}
                             onChange={onChange}
                             type='text'
@@ -117,7 +121,7 @@ export default function PizzaForm(props) {
 
 
             <div>
-                <button className='add-pizza-button' disabled={disabled}>
+                <button id='order-button' disabled={disabled}>
                     Add to Order
                 </button>
             </div>

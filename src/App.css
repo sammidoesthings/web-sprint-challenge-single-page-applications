@@ -1,7 +1,8 @@
 .App {
   text-align: center;
 }
-.form-container {
+
+#pizza-form {
   padding: 5vh;
   margin: 3vh;
   background-color: lavender;

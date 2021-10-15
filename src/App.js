@@ -5,6 +5,7 @@ import PizzaForm from './PizzaForm';
 import PizzaTicket from './PizzaTickets';
 import * as yup from 'yup';
 import schema from './Schema';
+import { Route, Link } from 'react-router-dom';
 
 const initialFormValues = {
   name: '',
@@ -98,34 +99,35 @@ const App = () => {
   //format return
   return (
     <>
-      <div>
-        <h2>Lambda Eats</h2>
-        <p>Are you a hungry, hungry Lambda?</p>
-      </div>
+      <Route exact path="/">
+        <div>
+          <h2>Lambda Eats</h2>
+          <p>Are you a hungry, hungry Lambda?</p>
+        </div>
 
-      <div>
-        <button>Pizza?</button>
-      </div>
+        <div>
+          <Link id='order-pizza' to='/pizza'><button>Pizza?</button></Link>
+        </div>
 
-      <div className='temporary-form-holder'>
+        <div>
+          <p>This is where you'll see pizza tickets show up!</p>
+          {pizzaTicket.map(pizza => {
+            return (
+              <PizzaTicket key={pizza.name} details={pizza}/>
+            )
+          })}
+        </div>
+      </Route>
+      
+      <Route exact path="/pizza">
         <PizzaForm
-          values={formValues}
-          change={inputChange}
-          submit={formSubmit}
-          disabled={disabled}
-          errors={formErrors}
+            values={formValues}
+            change={inputChange}
+            submit={formSubmit}
+            disabled={disabled}
+            errors={formErrors}
         />
-      </div>
-
-      <div>
-        <p>This is where you'll see pizza tickets (or other restaurants?) show up! (for now) </p>
-        {pizzaTicket.map(pizza => {
-          return (
-            <PizzaTicket key={pizza.name} details={pizza}/>
-          )
-        })}
-      </div>
-
+      </Route>
     </>
   );
 };
