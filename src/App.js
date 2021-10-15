@@ -111,11 +111,6 @@ const App = () => {
 
         <div>
           <p>This is where you'll see pizza tickets show up!</p>
-          {pizzaTicket.map(pizza => {
-            return (
-              <PizzaTicket key={pizza.name} details={pizza}/>
-            )
-          })}
         </div>
       </Route>
       

@@ -32,7 +32,6 @@ export default function PizzaForm(props) {
             <div className='form-info'>
                 <p>This is your pizza form! Build your own pizza below.</p>
             </div>
-
             <div className='form-inputs'>
                 <div>
                     <label> Who is this pizza for? &nbsp;
@@ -65,45 +64,51 @@ export default function PizzaForm(props) {
 
                 <div className='toppings-section'>
                     <h4>What toppings?</h4>
-                    <label> Cheese? &nbsp;
-                        <input
-                            id='name-input'
-                            checked={values.topping1}
-                            onChange={onChange}
-                            type='checkbox'
-                            name='topping1'
-                        />
-                    </label>
+                    <div>
+                        <label> Cheese? &nbsp;
+                            <input
+                                checked={values.topping1}
+                                onChange={onChange}
+                                type='checkbox'
+                                name='topping1'
+                            />
+                        </label>
+                    </div>
 
-                    <label> Olives? &nbsp;
-                        <input
-                            checked={values.topping2}
-                            onChange={onChange}
-                            type='checkbox'
-                            name='topping2'
-                        />
-                    </label>
+                    <div>
+                        <label> Olives? &nbsp;
+                            <input
+                                checked={values.topping2}
+                                onChange={onChange}
+                                type='checkbox'
+                                name='topping2'
+                            />
+                        </label>
+                    </div>
 
-                    <label> Pepperoni? &nbsp;
-                        <input
-                            checked={values.topping3}
-                            onChange={onChange}
-                            type='checkbox'
-                            name='topping3'
-                        />
-                    </label>
+                    <div>
+                        <label> Pepperoni? &nbsp;
+                            <input
+                                checked={values.topping3}
+                                onChange={onChange}
+                                type='checkbox'
+                                name='topping3'
+                            />
+                        </label>
+                    </div>
 
-                    <label> Pineapple? &nbsp;
-                        <input
-                            checked={values.topping4}
-                            onChange={onChange}
-                            type='checkbox'
-                            name='topping4'
-                        />
-                    </label>
-
+                    <div>
+                        <label> Pineapple? &nbsp;
+                            <input
+                                checked={values.topping4}
+                                onChange={onChange}
+                                type='checkbox'
+                                name='topping4'
+                            />
+                        </label>
+                    </div>
                 </div>
-
+<br></br>
                 <div>
                     <label> Do you have any special instructions for our staff?
                         <input
@@ -118,8 +123,7 @@ export default function PizzaForm(props) {
             
             {/* END OF FORM INPUTS */}
             </div>
-
-
+<br></br>
             <div>
                 <button id='order-button' disabled={disabled}>
                     Add to Order
