@@ -98,7 +98,7 @@ const App = () => {
 
   //format return
   return (
-    <>
+    <div className="App">
       <Route exact path="/">
         <div>
           <h2>Lambda Eats</h2>
@@ -106,11 +106,11 @@ const App = () => {
         </div>
 
         <div>
-          <Link id='order-pizza' to='/pizza'><button>Pizza?</button></Link>
+          <Link id='order-pizza' to='/pizza'><button className="pizza-button">Pizza?</button></Link>
         </div>
 
         <div>
-          <p>This is where you'll see pizza tickets show up!</p>
+          <p>All Lambda students need pizza. You know you wanna.</p>
         </div>
       </Route>
       
@@ -123,7 +123,7 @@ const App = () => {
             errors={formErrors}
         />
       </Route>
-    </>
+    </div>
   );
 };
 export default App;

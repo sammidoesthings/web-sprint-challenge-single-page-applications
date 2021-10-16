@@ -111,13 +111,15 @@ export default function PizzaForm(props) {
 <br></br>
                 <div>
                     <label> Do you have any special instructions for our staff?
-                        <input
-                            id='special-text'
-                            value={values.special}
-                            onChange={onChange}
-                            type='text'
-                            name='special'
-                        />
+                        <div>
+                            <input
+                                id='special-text'
+                                value={values.special}
+                                onChange={onChange}
+                                type='text'
+                                name='special'
+                            />
+                        </div>
                     </label>
                 </div>
             

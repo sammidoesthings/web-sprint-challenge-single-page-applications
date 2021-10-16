@@ -1,44 +1,37 @@
 .App {
   text-align: center;
+  padding: 5rem;
+  background-color: rgba(241, 174, 87, 0.6);
+  color: papayawhip;
 }
 
 #pizza-form {
-  padding: 5vh;
   margin: 3vh;
-  background-color: lavender;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.pizza-button {
+  background-color: #cc4716;
+  border: 3px solid #b13c12;
+  border-radius: 100%;
+  height: 4rem;
+  width: 4.5rem;
+  font-weight: 700;
+  font-size: larger;
+  color: papayawhip;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#order-button {
+  background-color: #cc4716;
+  border: 3px solid #b13c12;
+  height: 4rem;
+  width: 9rem;
+  border-radius: 100%;
+  font-weight: 700;
+  font-size: larger;
+  color: papayawhip;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#special-text {
+  width: 20rem;
+  height: 3rem;
 }
